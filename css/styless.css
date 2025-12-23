@@ -3,6 +3,12 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  min-width: 0; 
+}
+
+html, body {
+  width: 100%;
+  overflow-x: hidden; /* temporary only to identify cause */
 }
 
 /* HEADER BASE */
@@ -330,13 +336,46 @@
 .hero-content {
   position: absolute;
   top: 40%;
-  left: 10%;
+  left: 7%;
   transform: translateY(-50%);
   text-align: left;
   z-index: 1;
   color: #ffffff;
   max-width: 600px;
   animation: fadeInLeft 1.5s ease forwards;
+}
+
+/* Adjust for smaller screens */
+@media (max-width: 992px) {
+  .hero-content {
+    top: 35%;
+    max-width: 500px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-content {
+    top: 30%;
+    text-align: center;
+    width: 95%;
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content {
+    top: 25%;
+    width: 95%;
+    max-width: 350px;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem; /* shrink heading */
+  }
+
+  .hero-content p {
+    font-size: 1rem; /* shrink paragraph */
+  }
 }
 
 .hero-text{
@@ -500,7 +539,7 @@
 
 /* ===== SERVICES SECTION ===== */
 .flat-spacing-service {
-  padding: 16rem 2rem;
+  padding: 14rem 2rem;
   background: linear-gradient(180deg, #ffffff 0%, #f9f9f9 100%);
   font-family: "Poppins", sans-serif;
 }
@@ -518,6 +557,30 @@
   font-size: 2.5rem;
   font-weight: 800;
   margin-top: 0.5rem;
+}
+
+@media (max-width: 1200px) {
+  .flat-spacing-service {
+    padding-top: 32rem; /* slightly smaller top padding */
+  }
+}
+
+@media (min-width: 1098px) {
+  .flat-spacing-service {
+    padding-top: 12rem; 
+  }
+}
+
+@media (max-width: 992px) {
+  .flat-spacing-service {
+    padding-top: 32rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .flat-spacing-service {
+    padding-top: 32rem; /* small screens */
+  }
 }
 
 /* ===== GRID LAYOUT ===== */
@@ -1651,6 +1714,43 @@ footer {
   margin: 0 auto 70px;
 }
 
+/* Mobile: max-width 768px */
+@media screen and (max-width: 768px) {
+  /* Turn slider track into a grid */
+  .carousel-track {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    transform: none !important; /* remove slider transform */
+  }
+
+  /* Cards full width inside grid */
+  .destination-card {
+    flex: none !important;
+    width: 100% !important;
+    margin: 0;
+  }
+
+  /* Hide slider navigation buttons/arrows */
+  .carousel-button-prev,
+  .carousel-button-next {
+    display: none !important;
+  }
+
+  /* Optional: hide dots/pagination if any */
+  .nav-btn {
+    display: none !important;
+  }
+}
+
+/* Extra small screens: single column */
+@media screen and (max-width: 480px) {
+  .carousel-track {
+    grid-template-columns: 1fr;
+  }
+}
+
+
 .carousel-track {
   display: flex;
   transition: transform 0.5s ease-in-out;
@@ -1667,6 +1767,8 @@ footer {
   text-align: center;
   margin: 0 10px;
 }
+
+
 
 .destination-card:hover {
   transform: translateY(-6px);
@@ -2556,5 +2658,61 @@ footer {
 @media (max-width: 600px) {
   .tours-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+.whatsapp-button {
+  position: fixed;
+  bottom: 20px;
+  left: 20px; /* change to right: 20px if you want it on the right */
+  z-index: 1000;
+  display: block;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  
+}
+
+.whatsapp-button img {
+  width: 100%;
+  height: 100%;
+}
+
+.white-bar {
+  padding: 10px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  width: calc(100% - 40px); /* subtract the left + right spacing */
+  max-width: 1180px;        /* optional */
+  margin: 0 auto;            /* centers the bar */
+  box-sizing: border-box;
+}
+
+.developed {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #96abb0;
+  font-size: 14px;
+}
+
+.developed span{
+  color: #FDB501;
+  margin-left: 6px;
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .white-bar {
+    flex-direction: column; /* stack items vertically on small screens */
+    align-items: flex-start; /* align content to the left */
+    padding-left: 15px; /* reduce side padding */
+    padding-right: 15px;
   }
 }
